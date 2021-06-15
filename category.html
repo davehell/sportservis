@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 id="categoryName"></h1>
+  <div id="products" class="row"></div>
+</div>
+
+<div id="template" class="col-md-4">
+  <a>
+    <div class="card text-center mb-4 box-shadow">
+    <img class="card-img-top" height="252px">
+    <div class="card-body">
+      <h6></h6>
+      <p></p>
+    </div>
+    </div>
+  </a>
+</div>
+
+<script>
+app.page("category", function() 
+{
+
+    var list = $( "#products" );
+
+    return function(category) {
+        var products = getProductsInCategory(category);
+        var categoryName = getCategoryName(category);
+        $("#categoryName").text(categoryName);
+        list.empty();
+        $.each(products, function( i, item ) {
+            var product = $("#template").clone();
+            product.attr("id", "");
+            var thumb = item.i ? "image/cache/data/volejbal/" + item.i.replace(".", "-252x252.") : "image/cache/no_image-252x252.jpg";
+            $("img.card-img-top", product).attr("src", thumb);
+            $("h6", product).text(item.n);
+            $("p", product).text(item.p + " " + item.m);
+            $("a", product).attr("href", "#product:" + item.nSlug);
+            list.append(product);
+        });
+    }
+}); 
+</script>

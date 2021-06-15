@@ -1,0 +1,21 @@
+/* all sections are off by default */
+body #main > section { display:none; }
+
+body.about    #main > section#about,
+body.category #main > section#category,
+body.product  #main > section#product { display:block; }
+
+#header {
+    margin-bottom: 15px;
+}
+
+body.category #template {
+    display: none;
+}
+body.category #products a {
+    text-decoration: none;
+    color: #212529;
+}
+body.category #products a:hover .card {
+    background-color: #f8f9fa;
+}
